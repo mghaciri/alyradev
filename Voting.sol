@@ -130,7 +130,9 @@ contract Voting is Ownable {
                 emit Voted (msg.sender, i);
             }
         }
-    }
+         // Déclarer le votant
+          whitelist[msg.sender].hasVoted = true;
+   }
 
     // L'administrateur du vote comptabilise les votes.
     function comptabilierVote() public onlyOwner returns (uint) {
@@ -161,5 +163,6 @@ contract Voting is Ownable {
     function getStatus() external view returns (WorkflowStatus) {
         return defaultstate;
     }
+
 
 }
